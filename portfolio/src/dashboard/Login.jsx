@@ -7,7 +7,6 @@ const Login = () => {
   const handleGoogleSignIn = async () => {
     try {
       await signInWithGoogle(); // Google Sign-In
-      console.log("Google Sign-In successful!");
       localStorage.Loggedin = true;
       navigate("/dashboard"); // Redirect to dashboard
     } catch (error) {

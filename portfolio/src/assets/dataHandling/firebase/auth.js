@@ -39,7 +39,6 @@ export const signInWithGoogle = () => {
         throw new Error("You are not authorized to sign in with Google.");
       }
 
-      console.log("Google Sign-In successful:", user);
       return user;
     })
     .catch((error) => {
