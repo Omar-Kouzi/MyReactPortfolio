@@ -6,7 +6,6 @@ function Navbar() {
   const location = useLocation();
   const isDashboardRoute = location.pathname.startsWith("/dashboard");
   if (isDashboardRoute && !localStorage.Loggedin) {
-    console.log("Not loggedin");
     return <NormalNavbar />;
   }
   if (isDashboardRoute) {

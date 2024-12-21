@@ -37,7 +37,7 @@ const Home = () => {
         const docs = await getProjects();
         setProjects(docs);
       } catch (error) {
-        console.error("Error fetching skills documents:", error);
+        console.error("Error fetching projects documents:", error);
       } finally {
         setLoading(false);
       }

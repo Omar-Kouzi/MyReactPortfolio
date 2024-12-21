@@ -21,7 +21,6 @@ const getCollectionRef = (collectionName) => collection(db, collectionName);
 export const addDocument = async (collectionName, data) => {
   try {
     const docRef = await addDoc(getCollectionRef(collectionName), data);
-    console.log(`Document added with ID: ${docRef.id}`);
     return docRef.id;
   } catch (error) {
     console.error(`Error adding document to ${collectionName}:`, error);
@@ -41,7 +40,6 @@ export const getDocument = async (collectionName, docId) => {
     if (docSnap.exists()) {
       return { id: docId, ...docSnap.data() };
     } else {
-      console.log(`No such document: ${docId} in ${collectionName}`);
       return null;
     }
   } catch (error) {

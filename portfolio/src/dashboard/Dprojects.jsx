@@ -119,7 +119,6 @@ const Dprojects = () => {
       const imageUrl = await uploadToCloudinary(projectData.Image);
       const ProjectToSave = { ...projectData, Image: imageUrl };
       await addProject(ProjectToSave);
-      console.log("Project added successfully!");
 
       // Reset form data
       setProjectData({

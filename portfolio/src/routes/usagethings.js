@@ -4,7 +4,6 @@ const GoogleLoginButton = () => {
   const handleGoogleLogin = async () => {
     try {
       const user = await signInWithGoogle();
-      console.log("Logged in with Google:", user);
     } catch (error) {
       console.error("Google login failed:", error);
     }
@@ -34,7 +33,6 @@ const addProject = async (projectData, imageFile) => {
     // Add project to Firestore
     await setProject(projectData.id, { ...projectData, Image: imageUrl });
 
-    console.log("Project added successfully!");
   } catch (error) {
     console.error("Error adding project:", error);
   }

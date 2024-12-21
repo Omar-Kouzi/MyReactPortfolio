@@ -46,7 +46,6 @@ const Dskills = () => {
       const imageUrl = await uploadToCloudinary(skillData.Image);
       const skillToSave = { ...skillData, Image: imageUrl };
       await addSkill(skillToSave);
-      console.log("Skill added successfully!");
       fetchSkills();
       // Reset form data
       setSkillData({ Title: "", Image: null, Text: "" });
