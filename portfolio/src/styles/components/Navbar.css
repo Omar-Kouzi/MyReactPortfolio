@@ -1,0 +1,72 @@
+/* Desktop Navbar */
+.Navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 50px 70px;
+  border: 1px solid;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+.Navbar-Icon {
+  height: 150px;
+  width: 150px;
+  border: solid;
+  border-radius: 100px;
+}
+
+.Navigators {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 80px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .Navbar {
+    display: none;
+  }
+}
+
+/* Responsive Navbar */
+.Responcive-Navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 50px 70px;
+  border: 1px solid;
+  border-radius: 20px;
+  background-color: var(--background);
+  z-index: 999;
+  margin: 20px 0px 20px 0px;
+  transform: translateX(-100%); /* Start off-screen to the left */
+  transition: transform 0.4s ease-in-out; /* Smooth slide-in animation */
+}
+
+.Responcive-Navbar.visible {
+  transform: translateX(0);
+}
+
+.Navbar-Toggle {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 0px;
+  z-index: 1000;
+  background: var(--background);
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1200px) {
+  .Navbar-Toggle {
+    display: block;
+  }
+}

@@ -1,0 +1,62 @@
+/* Filtering bar */
+.Project-Details {
+  padding: 5px 10px;
+  border: 1px solid;
+  margin-bottom: 20px;
+}
+.Filtering-Sorting {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+.Projects-Skills-Selector {
+  display: flex;
+  gap: 40px;
+}
+
+.Filter-Dropdown,
+.sort-dropdown,
+.Dropdown-Button,
+.Dropdown-Menu {
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 200px;
+  background-color: var(--background);
+}
+.Dropdown-Button:hover {
+  box-shadow: none !important;
+}
+.Filter-Dropdown {
+  margin-right: 10px;
+}
+.Custom-Dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.Dropdown-Menu {
+  display: none;
+  position: absolute;
+  background-color: var(--background);
+}
+
+.Custom-Dropdown:hover .Dropdown-Menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 180px;
+}
+/* Fetching Projects */
+.Projects-Fetched {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+@media only screen and (max-width: 380px) {
+  .Projects-Fetched {
+    gap: 13px;
+  }
+}

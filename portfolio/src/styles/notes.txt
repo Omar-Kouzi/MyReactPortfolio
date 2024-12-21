@@ -1,0 +1,1 @@
+// remember to fix the navbar at 1200px to becom invisible

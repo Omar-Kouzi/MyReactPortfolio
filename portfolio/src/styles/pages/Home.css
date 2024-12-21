@@ -1,0 +1,178 @@
+/* About section */
+.Home-About-Content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Home-About-Text-Content {
+  width: 50%;
+}
+.Home-About-Text {
+  margin-bottom: 30px;
+}
+.Home-About-RandomBoy {
+  border: solid;
+  border-radius: 10px;
+  width: 200px;
+  text-align: center;
+}
+.Home-About-Image {
+  height: 400px;
+  margin-right: 100px;
+  margin-bottom: 20px;
+}
+@media only screen and (max-width: 1200px) {
+  .Home-About-Image {
+    margin-right: 0px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .About {
+    margin-top: 20px;
+  }
+  .Home-About-Content {
+    flex-direction: column-reverse;
+  }
+  .Home-About-Text-Content {
+    width: 90%;
+  }
+}
+
+/* Skills */
+.Home-Skills-Projects-Content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.Home-Skills {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 20px;
+  padding: 20px 50px;
+}
+.Home-Skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 233px;
+}
+.Home-Skill-Image {
+  height: 200px;
+  width: 200px;
+}
+.Home-Skill-Showmore {
+  margin-right: 20px;
+  height: 450px;
+}
+@media only screen and (max-width: 910px) {
+  .Home-Skill {
+    height: 200px;
+  }
+  .Home-Skills {
+    padding: 20px 40px;
+  }
+  .Home-Skill-Image {
+    height: 150px;
+    width: 150px;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .Home-Skill {
+    height: 170px;
+  }
+  .Home-Skills {
+    padding: 20px 20px;
+  }
+  .Home-Skill-Image {
+    height: 130px;
+    width: 130px;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .Home-Skills-Projects-Content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .Home-Skills {
+    padding: 20px 5px;
+  }
+}
+@media only screen and (max-width: 520px) {
+  .Home-Skills {
+    gap: 10px;
+  }
+  .Home-Skill {
+    height: 150px;
+  }
+  .Home-Skill-Image {
+    height: 100px;
+    width: 100px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .Home-Skill-Image {
+    height: 80px;
+    width: 80px;
+  }
+}
+/* Projects */
+.Home-Project {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 270px;
+}
+
+.Home-Project-Image {
+  border-radius: 20px 20px 0 0;
+  height: 200px;
+  width: 200px;
+}
+.Home-Projects-Showmore {
+  margin-right: 20px;
+  height: 250px;
+}
+@media only screen and (max-width: 910px) {
+  .Home-Project {
+    height: 200px;
+  }
+
+  .Home-Project-Image {
+    height: 150px;
+    width: 150px;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .Home-Project {
+    height: 170px;
+  }
+  .Home-Project-Image {
+    height: 130px;
+    width: 130px;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .Home-Skill-Showmore,
+  .Home-Projects-Showmore {
+    margin-right: 0px;
+    height: 100%;
+    width: 80vw;
+  }
+}
+@media only screen and (max-width: 520px) {
+  .Home-Project {
+    height: 150px;
+  }
+  .Home-Project-Image {
+    height: 100px;
+    width: 100px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .Home-Project-Image {
+    height: 80px;
+    width: 80px;
+  }
+}

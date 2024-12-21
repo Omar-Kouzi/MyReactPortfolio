@@ -1,0 +1,30 @@
+.Skills-Skill-Image {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  object-fit: contain;
+}
+@media only screen and (max-width: 910px) {
+  .Skills-Skill-Image {
+    height: 150px;
+    width: 150px;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .Skills-Skill-Image {
+    height: 130px;
+    width: 130px;
+  }
+}
+@media only screen and (max-width: 520px) {
+  .Skills-Skill-Image {
+    height: 100px;
+    width: 100px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .Skills-Skill-Image {
+    height: 80px;
+    width: 80px;
+  }
+}

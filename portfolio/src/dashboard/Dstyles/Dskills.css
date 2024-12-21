@@ -1,0 +1,29 @@
+.Create-Skill-Form {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+  border: solid;
+}
+.Dashboard-Skills {
+  display: flex;
+  flex-direction: column;
+}
+.Dashboard-SkillRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid;
+  padding: 10px 0px;
+}
+.Dashboard-SkillRow-Image {
+  object-fit: contain;
+  border: solid;
+  border-radius: 50%;
+  padding: 5px;
+  width: 90px;
+  height: 90px;
+}
+.Dashboard-Skill-Buttons {
+  display: flex;
+  gap: 5px;
+}

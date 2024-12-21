@@ -1,0 +1,142 @@
+/* Import fonts */
+/* @import url("https://fonts.googleapis.com/css?family=Noto%20Sans%20Kayah%20Li:700|Noto%20Sans%20Kayah%20Li:400"); */
+/* pages styles */
+@import url(./styles/pages/Home.css);
+@import url(./styles/pages/Projects.css);
+@import url(./styles/pages/Project.css);
+@import url(./styles/pages/Skills.css);
+@import url(./styles/pages/Contact.css);
+/* dasbboard styles */
+@import url(./dashboard/Dstyles/Dskills.css);
+
+/* components styles */
+@import url(./styles/components/Navbar.css);
+@import url(./styles/components/Navbar.css);
+@import url(./styles/components/Navbar.css);
+@import url(./styles/components/Navbar.css);
+/* colors */
+/* :root[data-theme="light"] {
+  --text: #090606;
+  --background: #faf5f7;
+  --primary: #33000c;
+  --secondary: #d194a3;
+  --accent: #ce788c;
+}
+:root[data-theme="dark"] {
+  --text: #f9f6f6;
+  --background: #0a0507;
+  --primary: #ffccd8;
+  --secondary: #6b2e3d;
+  --accent: #873145;
+} */
+/* :root {
+  --text: #f9f6f6;
+  --background: #0a0507;
+  --static: #0f0f0f;
+  --primary: #ffccd8;
+  --secondary: #6b2e3d;
+  --accent: #873145;
+} */
+:root {
+  --text: #f3f0e5;
+  --background: #0a0904;
+  --primary: #fad55f;
+  --secondary: #756225;
+  --accent: #cdae47;
+}
+* {
+  font-family: "Noto Sans Kayah Li";
+  color: var(--text);
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
+  user-select: none;
+  /* border: 1px solid; */
+}
+html {
+  display: flex;
+  width: 100vw;
+  overflow: hidden;
+  background-color: var(--background);
+}
+::-webkit-scrollbar {
+  display: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 700;
+}
+html {
+  font-size: 18px; /* 16px */
+}
+h1 {
+  font-size: 4.21rem; /* 67.36px */
+}
+h2 {
+  font-size: 3.158rem; /* 50.56px */
+}
+h3 {
+  font-size: 2.369rem; /* 37.92px */
+}
+h4 {
+  font-size: 1.777rem; /* 28.48px */
+}
+h5 {
+  font-size: 1.333rem; /* 21.28px */
+}
+small {
+  font-size: 0.75rem; /* 12px */
+}
+a {
+  text-decoration: none;
+  color: var(--text);
+}
+input {
+  background-color: #0a0904;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 10px;
+}
+button {
+  background-color: var(--secondary);
+  color: var(--text);
+  padding: 5px 10px;
+  border: 1px solid var(--static);
+  border-radius: 10px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+button:hover {
+  /* background-color: var(--accent); */
+  box-shadow: 2px 10px 14px 0 var(--secondary);
+  cursor: pointer;
+}
+.App {
+  height: 100vh;
+  display: flex;
+}
+.Routes {
+  overflow: scroll;
+  padding: 20px;
+  border: 2px solid;
+  border-radius: 20px;
+  height: 93vh;
+  width: 75vw;
+}
+
+.Loading {
+  width: 75.2vw;
+}
+@media only screen and (max-width: 1200px) {
+  .Routes {
+    position: relative;
+    margin-left: 50px;
+    width: 88.2vw;
+  }
+  .Loading {
+    width: 88vw;
+  }
+}
