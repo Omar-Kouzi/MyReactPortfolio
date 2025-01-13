@@ -1,25 +1,21 @@
-export const uploadToCloudinary = async (file) => {
+export const uploadToCloudinary = async (files) => {
   const url = process.env.REACT_APP_UploadUrl;
   const uploadPreset = process.env.REACT_APP_UploadPreset;
-  const formData = new FormData();
-  formData.append("file", file);
-  formData.append("upload_preset", uploadPreset);
 
   try {
-    const response = await fetch(url, {
-      method: "POST",
-      body: formData,
+    const uploadPromises = files.map((file) => {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", uploadPreset);
+
+      return fetch(url, {
+        method: "POST",
+        body: formData,
+      }).then((response) => response.json());
     });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(
-        `Upload failed: ${response.statusText}. Details: ${errorText}`
-      );
-    }
-
-    const data = await response.json();
-    return data.secure_url;
+    const results = await Promise.all(uploadPromises);
+    return results.map((result) => result.secure_url);
   } catch (error) {
     console.error("Error uploading to Cloudinary:", error);
     throw error;

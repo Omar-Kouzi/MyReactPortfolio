@@ -126,7 +126,7 @@ const Home = () => {
               displayedProjects.map((project) => (
                 <div key={project.id} className="Home-Project">
                   <img
-                    src={project.Image || ""}
+                    src={project.Image[0] || ""}
                     alt="Project"
                     className="Home-Project-Image"
                   />

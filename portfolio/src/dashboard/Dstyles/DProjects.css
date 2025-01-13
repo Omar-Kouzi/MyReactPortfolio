@@ -1,0 +1,19 @@
+.Create-Project-Form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  border-bottom: solid;
+  padding-bottom: 10px;
+  align-items: baseline;
+}
+.Create-Project-Input-div,
+.Create-Skill-Input-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.Create-Project-Submit {
+  width: 100px;
+  height: 50px;
+  align-self: flex-end;
+}

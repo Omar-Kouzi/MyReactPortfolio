@@ -10,10 +10,9 @@ import { useNavigate } from "react-router-dom";
 import { deleteFromCloudinary } from "../assets/dataHandling/cloudinary/deleting";
 
 const Dprojects = () => {
-  // State management for project data, projects, skills, loading, and error states
   const [projectData, setProjectData] = useState({
     Title: "",
-    Image: null,
+    Image: [],
     Text: "",
     Link: "",
     Skills: [],
@@ -27,35 +26,34 @@ const Dprojects = () => {
 
   /* -------------------- FETCHING FUNCTIONS -------------------- */
 
-  // Fetch skills from Firestore
   const fetchSkills = async () => {
     try {
       const SkillsDoc = await getSkills();
       setSkills(SkillsDoc);
     } catch (error) {
       console.error("Error fetching Skills:", error);
-    } finally {
-      setLoading(false);
     }
   };
 
-  // Fetch projects from Firestore
   const fetchProjects = async () => {
     try {
       const ProjectsDoc = await getProjects();
       setProjects(ProjectsDoc);
     } catch (error) {
       console.error("Error fetching Projects:", error);
-    } finally {
-      setLoading(false);
     }
   };
 
-  // Delete a specific project by ID
-  const DeleteProject = (imageName, id) => {
-    deleteFromCloudinary(imageName);
-    deleteProject(id);
-    fetchProjects(); // Refresh the projects list after deletion
+  const DeleteProject = async (imageNames, id) => {
+    try {
+      await Promise.all(
+        imageNames.map((imageName) => deleteFromCloudinary(imageName))
+      );
+      await deleteProject(id);
+      fetchProjects();
+    } catch (error) {
+      console.error("Error deleting project:", error);
+    }
   };
 
   useEffect(() => {
@@ -65,17 +63,18 @@ const Dprojects = () => {
 
   /* -------------------- INPUT HANDLING FUNCTIONS -------------------- */
 
-  // General input handler for form fields
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
     if (type === "file") {
-      setProjectData((prevData) => ({ ...prevData, [name]: files[0] }));
+      setProjectData((prevData) => ({
+        ...prevData,
+        [name]: Array.from(files),
+      }));
     } else {
       setProjectData((prevData) => ({ ...prevData, [name]: value }));
     }
   };
 
-  // Add an empty type field for dynamic input
   const handleAddType = () => {
     setProjectData((prevData) => ({
       ...prevData,
@@ -83,14 +82,12 @@ const Dprojects = () => {
     }));
   };
 
-  // Update a specific type field
   const handleTypeChange = (index, value) => {
     const newTypes = [...projectData.Type];
     newTypes[index] = value;
     setProjectData((prevData) => ({ ...prevData, Type: newTypes }));
   };
 
-  // Handle selection/deselection of skills using checkboxes
   const handleSkillChange = (e) => {
     const { value } = e.target;
     setProjectData((prevData) => {
@@ -103,12 +100,11 @@ const Dprojects = () => {
 
   /* -------------------- SUBMITTING FORM FUNCTION -------------------- */
 
-  // Handle project submission with image upload
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!projectData.Image) {
-      setError("No image selected");
+    if (!projectData.Image || projectData.Image.length === 0) {
+      setError("No images selected");
       return;
     }
 
@@ -116,14 +112,13 @@ const Dprojects = () => {
     setError("");
 
     try {
-      const imageUrl = await uploadToCloudinary(projectData.Image);
-      const ProjectToSave = { ...projectData, Image: imageUrl };
+      const imageUrls = await uploadToCloudinary(projectData.Image);
+      const ProjectToSave = { ...projectData, Image: imageUrls };
       await addProject(ProjectToSave);
 
-      // Reset form data
       setProjectData({
         Title: "",
-        Image: null,
+        Image: [],
         Text: "",
         Link: "",
         Skills: [],
@@ -134,24 +129,20 @@ const Dprojects = () => {
       setError(`Error: ${error.message}`);
     } finally {
       setLoading(false);
-      fetchProjects(); // Refresh the projects list
+      fetchProjects();
     }
   };
 
   /* -------------------- NAVIGATION FUNCTION -------------------- */
 
-  // Navigate to the project's detailed page
   const handleItemClick = (projectid) => {
     navigate(`/project/${projectid}`);
   };
 
-  /* -------------------- JSX RETURN BLOCK -------------------- */
-
   return (
     <div>
-      {/* Form for adding a new project */}
-      <form onSubmit={handleSubmit} className="Create-Skill-Form">
-        <div>
+      <form onSubmit={handleSubmit} className="Create-Project-Form">
+        <div className="Create-Project-Input-div">
           <label htmlFor="title">Title</label>
           <input
             type="text"
@@ -161,7 +152,7 @@ const Dprojects = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="Create-Project-Input-div">
           <label htmlFor="text">Text</label>
           <input
             type="text"
@@ -171,7 +162,7 @@ const Dprojects = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="Create-Project-Input-div">
           <label htmlFor="Link">Link</label>
           <input
             type="text"
@@ -181,7 +172,28 @@ const Dprojects = () => {
             onChange={handleChange}
           />
         </div>
-
+        {/* Skills selection using checkboxes */}
+        <div>
+          <p>Skills</p>
+          <div className="Custom-Dropdown">
+            <button className="Dropdown-Button" type="button">
+              Select Skills
+            </button>
+            <div className="Dropdown-Menu">
+              {skills.map((skill) => (
+                <label key={skill.id}>
+                  <input
+                    type="checkbox"
+                    value={skill.id}
+                    checked={projectData.Skills.includes(skill.id)}
+                    onChange={handleSkillChange}
+                  />
+                  {skill.Title}
+                </label>
+              ))}
+            </div>
+          </div>
+        </div>
         <div>
           <label>Type</label>
           {projectData.Type.map((type, index) => (
@@ -197,49 +209,27 @@ const Dprojects = () => {
             Add Type
           </button>
         </div>
-
-        {/* Skills selection using checkboxes */}
-        <div className="Custom-Dropdown">
-          <button className="Dropdown-Button" type="button">
-            Select Skills
-          </button>
-          <div className="Dropdown-Menu">
-            {skills.map((skill) => (
-              <label key={skill.id}>
-                <input
-                  type="checkbox"
-                  value={skill.id}
-                  checked={projectData.Skills.includes(skill.id)}
-                  onChange={handleSkillChange}
-                />
-                {skill.Title}
-              </label>
-            ))}
-          </div>
+        <div className="Create-Project-Input-div">
+          <label>Images</label>
+          <input type="file" name="Image" multiple onChange={handleChange} />
         </div>
 
-        <div>
-          <label htmlFor="image">Image</label>
-          <input
-            type="file"
-            id="image"
-            name="Image"
-            accept="image/*"
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit" disabled={loading}>
+        <button
+          type="submit"
+          disabled={loading}
+          className="Create-Project-Submit"
+        >
           {loading ? "Uploading..." : "Add Project"}
         </button>
+
         {error && <p style={{ color: "red" }}>{error}</p>}
       </form>
-
       {/* Display the list of projects */}
       <div className="Dashboard-Skills">
         {projects.map((project) => (
           <div key={project.id} className="Dashboard-SkillRow">
             <img
-              src={project.Image}
+              src={project.Image[0]}
               alt="project"
               className="Dashboard-SkillRow-Image"
             />

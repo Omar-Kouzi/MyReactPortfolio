@@ -3,6 +3,8 @@
   justify-content: space-evenly;
   padding: 10px;
   border: solid;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 .Dashboard-Skills {
   display: flex;
@@ -26,4 +28,10 @@
 .Dashboard-Skill-Buttons {
   display: flex;
   gap: 5px;
+}
+
+.Create-Skill-Submit {
+  width: 100px;
+  height: 50px;
+  align-self: flex-end;
 }

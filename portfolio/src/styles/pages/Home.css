@@ -129,6 +129,7 @@
   border-radius: 20px 20px 0 0;
   height: 200px;
   width: 200px;
+  object-fit: contain;
 }
 .Home-Projects-Showmore {
   margin-right: 20px;

@@ -8,6 +8,7 @@
 @import url(./styles/pages/Contact.css);
 /* dasbboard styles */
 @import url(./dashboard/Dstyles/Dskills.css);
+@import url(./dashboard/Dstyles/DProjects.css);
 
 /* components styles */
 @import url(./styles/components/Navbar.css);

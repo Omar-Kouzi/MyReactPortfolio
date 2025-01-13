@@ -59,7 +59,7 @@ const Project = () => {
         </div>
         <a href={project.link}>
           <img
-            src={project.Image}
+            src={project.Image[1]}
             alt={project.Title}
             className="Project-Main-Image"
           />
