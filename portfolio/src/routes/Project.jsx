@@ -53,11 +53,11 @@ const Project = () => {
         <div className="Project-Main-Text">
           <h3>{project.Title}</h3>
           <p className="Project-Text">{project.Text}</p>
-          <a href={project.link}>
-            <button> Link</button>
+          <a href={project.Link}  className="Project-Link">
+          <button> Link: {project.Link}</button>
           </a>
         </div>
-        <a href={project.link}>
+        <a href={project.Link}>
           <img
             src={project.Image[1]}
             alt={project.Title}
